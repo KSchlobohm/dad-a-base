@@ -3,26 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#5a3e2b" />
   <title>Dad-A-Base</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="%BASE_URL%icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
 </head>
 <body>
   <div class="container">
     <h1>Dad-A-Base</h1>
-    <div class="card" id="card" onclick="tap()">
+    <div class="card" id="card" role="button" tabindex="0" aria-label="Reveal or hide punchline">
       <p id="setup-text"></p>
       <p id="punchline-text" class="punchline hidden"></p>
       <div id="joke-link-container"></div>
       <span class="hint">tap to reveal</span>
     </div>
     <div class="nav">
-      <button class="nav-btn" onclick="prev()">&#8592; Back</button>
-      <button class="nav-btn" onclick="next()">Next &#8594;</button>
+      <button class="nav-btn" id="back-button">&#8592; Back</button>
+      <button class="nav-btn" id="next-button">Next &#8594;</button>
     </div>
   </div>
-  <script src="app.js"></script>
+  <div id="update-banner" class="update-banner hidden" role="status">
+    A new version is available.
+    <button id="update-button" type="button">Update</button>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

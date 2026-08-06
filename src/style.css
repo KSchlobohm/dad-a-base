@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background-color: #fdf6e3;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #5a3e2b;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.card {
+  background-color: #fff8dc;
+  border: 3px solid #d4a843;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.card:focus-visible,
+.nav-btn:focus-visible,
+.update-banner button:focus-visible {
+  outline: 3px solid #1b6fa8;
+  outline-offset: 3px;
+}
+
+.card:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+#setup-text {
+  font-family: 'Nunito', Arial, sans-serif;
+  font-size: 1.4rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.punchline {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #5a3e2b;
+  background-color: #f5e9b0;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  line-height: 1.5;
+}
+
+.joke-link {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #1b6fa8;
+  text-decoration: none;
+  font-style: normal;
+}
+
+.joke-link:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #777;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 0.75rem 1.25rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  color: #5a3e2b;
+  background-color: #fff8dc;
+  border: 2px solid #d4a843;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.nav-btn:hover {
+  background-color: #f5e9b0;
+}
+
+.nav-btn:active {
+  transform: scale(0.96);
+}
+
+.update-banner {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  margin: auto;
+  max-width: 480px;
+  padding: 1rem;
+  color: #fff;
+  background: #5a3e2b;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.update-banner button {
+  margin-left: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  color: #5a3e2b;
+  background: #fff8dc;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
