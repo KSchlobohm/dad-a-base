@@ -16,6 +16,7 @@ mkdirSync(outputDirectory, { recursive: true })
 
 const commands = [
   runAndCapture('Repository diff validation', 'git', ['diff', 'HEAD', '--check'], 'git-diff-check.log'),
+  auditCommittedTree(),
   runAndCapture('Unified quality gate', npmCommand(), ['run', 'check'], 'quality-gate.log', {
     EVIDENCE_DIR: outputDirectory,
   }),
@@ -35,6 +36,7 @@ const requiredArtifacts = [
   'final-desktop.png',
   'final-mobile.png',
   'git-diff-check.log',
+  'committed-tree-audit.log',
   'quality-gate.log',
 ]
 
@@ -154,6 +156,29 @@ function runAndCapture(name, command, args, logName, environment = {}) {
     name,
     command: [command, ...args].join(' '),
     exitCode: result.status ?? 1,
+    logPath,
+    sha256: hashFile(logPath),
+  }
+}
+
+function auditCommittedTree() {
+  const forbiddenPaths = ['app.js', 'playwright.config.js', 'styles.css']
+  const treePaths = new Set(
+    gitText(['ls-tree', '-r', '--name-only', 'HEAD'])
+      .split(/\r?\n/)
+      .filter(Boolean),
+  )
+  const retained = forbiddenPaths.filter((path) => treePaths.has(path))
+  const logPath = resolve(outputDirectory, 'committed-tree-audit.log')
+  const output = retained.length === 0
+    ? 'PASS: superseded JavaScript entrypoints are absent from the committed tree.\n'
+    : `FAIL: committed tree retains ${retained.join(', ')}.\n`
+  writeFileSync(logPath, output)
+
+  return {
+    name: 'Committed tree audit',
+    command: 'git ls-tree -r --name-only HEAD',
+    exitCode: retained.length === 0 ? 0 : 1,
     logPath,
     sha256: hashFile(logPath),
   }
