@@ -33,6 +33,6 @@ There is no framework, backend, account, remote persistence, analytics, or telem
 
 **State transitions are pure.** Navigation and reveal changes belong in `src/domain/jokeDeck.ts`; navigation must always reset the punchline to hidden.
 
-**Setup and punchline are separate DOM elements.** `#setup-text` is always visible; `#punchline-text` starts hidden and is toggled by tapping the card. Navigation (`next`, `prev`) always resets the punchline to hidden via `loadJoke`. Use `.hidden` (a `display:none` utility class) to control punchline visibility.
+**Setup and punchline are separate DOM elements.** `#setup-text` is always visible; `#punchline-text` starts hidden and is toggled by tapping the card. Navigation through `nextJoke` or `previousJoke` always resets the punchline to hidden. Use `.hidden` (a `display:none` utility class) to control punchline visibility.
 
 **Tests use `#setup-text` and `#punchline-text`** — these IDs are load-bearing compatibility contracts.
