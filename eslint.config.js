@@ -18,10 +18,24 @@ export default tseslint.config(
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
+    },
+  },
+  {
+    files: ['src/**/*.ts'],
+    ignores: ['src/**/*.test.ts'],
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
+  {
+    files: [
+      '**/*.config.{js,mjs,ts}',
+      'scripts/**/*.{js,mjs,ts}',
+      'tests/**/*.{js,mjs,ts}',
+      'src/**/*.test.ts',
+    ],
+    languageOptions: {
+      globals: globals.node,
     },
   },
 )
