@@ -1,14 +1,13 @@
-// @ts-check
-const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test'
 
-module.exports = defineConfig({
+export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
+  forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://127.0.0.1:4173/dad-a-base/',
     trace: 'on-first-retry',
   },
   projects: [
@@ -18,8 +17,8 @@ module.exports = defineConfig({
     },
   ],
   webServer: {
-    command: 'npx serve . --listen 3000 --no-clipboard',
-    url: 'http://localhost:3000',
+    command: 'npm run preview -- --host 127.0.0.1 --port 4173',
+    url: 'http://127.0.0.1:4173/dad-a-base/',
     reuseExistingServer: !process.env.CI,
   },
-});
+})

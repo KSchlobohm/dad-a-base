@@ -1,23 +1,26 @@
-# Getting Started
+# Getting started
 
-See [Dependencies](dependencies.md) for assumed environment tools.
+Dad-A-Base requires Node.js 22 and npm.
 
 ## Setup
 
-```bash
-npm install
+```sh
+npm ci
+npx playwright install chromium
 ```
 
-## Run the App
+## Run the app
 
-```bash
-npm start
+```sh
+npm run dev
 ```
 
-The app will be served at http://localhost:3000.
+Vite serves the app at `http://localhost:5173`.
 
-## Run Tests
+## Validate changes
 
-```bash
-npm test
+```sh
+npm run check
 ```
+
+This runs linting, unit tests, strict type-checking, a production build, and Playwright journeys against the built `/dad-a-base/` application.

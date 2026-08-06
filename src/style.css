@@ -44,6 +44,13 @@ h1 {
   gap: 1.5rem;
 }
 
+.card:focus-visible,
+.nav-btn:focus-visible,
+.update-banner button:focus-visible {
+  outline: 3px solid #1b6fa8;
+  outline-offset: 3px;
+}
+
 .card:active {
   transform: scale(0.97);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
@@ -87,7 +94,7 @@ h1 {
 
 .hint {
   font-size: 0.85rem;
-  color: #aaa;
+  color: #777;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -118,4 +125,29 @@ h1 {
 
 .nav-btn:active {
   transform: scale(0.96);
+}
+
+.update-banner {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  margin: auto;
+  max-width: 480px;
+  padding: 1rem;
+  color: #fff;
+  background: #5a3e2b;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.update-banner button {
+  margin-left: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  color: #5a3e2b;
+  background: #fff8dc;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
 }

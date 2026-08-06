@@ -1,36 +1,16 @@
 # Dependencies
 
-This app has no runtime dependencies. It is plain HTML, CSS, and JavaScript that runs directly in any browser with no build step.
+Dad-A-Base has no server runtime and no production JavaScript dependencies. Vite bundles the static client and generates its PWA assets.
 
-## Developer Tools
+## Toolchain
 
-### Node.js LTS
+| Package | Purpose |
+|---|---|
+| Vite | Development server and production build |
+| TypeScript | Strict static type-checking |
+| ESLint and typescript-eslint | JavaScript and TypeScript linting |
+| Playwright | Production browser journeys |
+| tsx and Node test runner | DOM-independent unit tests |
+| vite-plugin-pwa | Manifest and offline app-shell generation |
 
-Provides `npm` to install dev dependencies and run scripts.
-
-```bash
-winget install OpenJS.NodeJS.LTS
-```
-
-### GitHub Copilot CLI
-
-AI-assisted development.
-
-```bash
-winget install GitHub.Copilot
-```
-
-### VS Code Insiders
-
-Recommended for reviewing changes.
-
-```bash
-winget install Microsoft.VisualStudioCode.Insiders
-```
-
-## Development Packages
-
-| Package | Version | Purpose |
-|---|---|---|
-| [`@playwright/test`](https://playwright.dev/) | `^1.59.1` | End-to-end browser tests |
-| [`serve`](https://github.com/vercel/serve) | `^14.2.6` | Static file server (used by `npm start` and tests) |
+Use `npm ci` so local and CI installs follow `package-lock.json`.
