@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { isAbsolute, relative, resolve, sep } from 'node:path'
 import { spawnSync } from 'node:child_process'
 
 const repositoryRoot = process.cwd()
@@ -12,6 +12,18 @@ if (!outputArgument) {
 }
 
 const outputDirectory = resolve(outputArgument)
+const outputRelativePath = relative(repositoryRoot, outputDirectory)
+if (
+  outputRelativePath === ''
+  || (
+    outputRelativePath !== '..'
+    && !outputRelativePath.startsWith(`..${sep}`)
+    && !isAbsolute(outputRelativePath)
+  )
+) {
+  process.stderr.write('Evidence output directory must be outside the repository.\n')
+  process.exit(2)
+}
 mkdirSync(outputDirectory, { recursive: true })
 
 const commands = [
